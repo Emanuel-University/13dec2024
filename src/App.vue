@@ -1,30 +1,30 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+  // import ButtonClick from "./components/ButtonClick.vue"
+  import InputConversie from "./components/InputConversie.vue"
+  
+  import { ref } from 'vue'
+
+  const total = ref(null);
+  function conversion(value) {
+     total.value = value * 4.9750;
+  }
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-</template>
+  <!-- <ButtonClick v-for="buttons in Array(5)" /> -->
+   <!-- <ButtonClick :startCount="7" />
+   <ButtonClick :startCount="5" />
+   <ButtonClick :startCount="3" /> -->
+   <InputConversie 
+     :labelInput="'Suma pe care dorești sa o schimbi'"
+     :currency="'EUR'"
+     :disabled="false" 
+     @inputValue="conversion" />
+   <br />
+   <InputConversie 
+     :labelInput="'Valoare'" 
+     :currency="'RON'" 
+     :disabled="true"
+     :total="total" />
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+</template>
